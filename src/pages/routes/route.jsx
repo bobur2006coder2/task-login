@@ -1,4 +1,3 @@
-import SignIn from "../../Components/Signin";
 import Home from "../Home";
 
 export const routes = [
