@@ -2,10 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import TableList from './TableList';
 import loginImg from "../assets/loginImg.png"
-import { Route, Routes, useNavigate } from 'react-router-dom';
-import { routes } from '../pages/routes/route';
+import { useNavigate } from 'react-router-dom';
 import useModalStore from '../store/IsAuth';
 
 const SignIn = () => {
@@ -61,29 +59,25 @@ const SignIn = () => {
                 })
         }
     }
-    function deleteFunction(id) {
-        fetch(url + "/" + id, {
-            method: "DELETE",
-        })
-            .then((result) => result.json())
-            .then(data => {
-                toast.success("delete success")
-                setInterval(() => {
-                    window.location.reload()
-                }, 2000)
-            })
-            .catch((eror) => {
-                toast.error("Malumotni topib bo`lmadi")
-            })
-    }
+    // function deleteFunction(id) {
+    //     fetch(url + "/" + id, {
+    //         method: "DELETE",
+    //     })
+    //         .then((result) => result.json())
+    //         .then(data => {
+    //             toast.success("delete success")
+    //             setInterval(() => {
+    //                 window.location.reload()
+    //             }, 2000)
+    //         })
+    //         .catch((eror) => {
+    //             toast.error("Malumotni topib bo`lmadi")
+    //         })
+    // }
 
 
     return (
         <div>
-            <div className="hidden">
-                <TableList apiuser={apiuser} deleteFunction={deleteFunction} />
-            </div>
-
             <ToastContainer />
             <div className='flex'>
                 <div className='flex h-[100vh] w-[50%] ' >
@@ -104,10 +98,8 @@ const SignIn = () => {
                             <br />
                             <input type="text" name="" id="" defaultValue="+998901234567" className='border-black border rounded-[5px]' {...register("password")} />
                         </label>
-
                         <button className='mx-auto mt-10 text-[17px] cursor-pointer w-[60%] bg-[#F48221] text-[#FFFFFF] flex gap-2  py-[11px] rounded-[15px] justify-center'>Kirish</button>
                     </form>
-                    {/* <button className='border mt-3' onClick={() => setIsLogin(prev => !prev)}>create new User</button> */}
                 </div>
             </div>
 

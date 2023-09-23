@@ -1,18 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import {  toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import "./App.css"
 import 'react-toastify/dist/ReactToastify.css';
-import TableList from './Components/TableList';
-import SignIn from './Components/Signin';
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { routes } from './pages/routes/route';
 import useModalStore from './store/IsAuth';
+import SignIn from './Components/Signin';
 
 const App = () => {
-  const {isAuth} = useModalStore();
-  const navigate = useNavigate()
+  const { isAuth } = useModalStore();
   const [apiuser, setApiUser] = useState()
- 
+
   let url = "https://ishaserverface.onrender.com/data"
   useEffect(() => {
     fetch(url)
@@ -43,9 +41,9 @@ const App = () => {
     <div>
 
       <Routes>
-        <Route path='/' element={<SignIn/>}/>
-        <Route path='*' element={<h1>Bunday page mavjud emas</h1>}/>
-        { isAuth ?
+        <Route path='/' element={<SignIn />} />
+        <Route path='*' element={<h1>Bunday page mavjud emas</h1>} />
+        {isAuth ?
           routes.map((elem) => {
             return (
               <Route key={elem.id} path={elem.path} element={elem.element} />
@@ -55,11 +53,7 @@ const App = () => {
         }
       </Routes>
 
-      <div className="hidden">
-        <TableList apiuser={apiuser} deleteFunction={deleteFunction} />
-      </div>
-      {/* <SignIn/> */}
-   
+
 
 
 
