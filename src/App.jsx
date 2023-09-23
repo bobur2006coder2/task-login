@@ -40,14 +40,14 @@ const App = () => {
       })
   }
 
-  
+
 
   return (
     <div>
 
       <Routes>
         <Route path='/' element={<SignIn/>}/>
-        <Route path='*' element={<h1>Fatalku bu</h1>}/>
+        <Route path='*' element={<h1>Bunday page mavjud emas</h1>}/>
         { isAuth ?
           routes.map((elem) => {
             return (
